@@ -8,6 +8,7 @@ public class MoveToMenu : MonoBehaviour {
     private bool changeToMenu = false;
     private float currentRemainTime;
     private float red, green, blue;
+    private Touch touch;
 
 	// Use this for initialization
 	void Start () {
@@ -19,9 +20,24 @@ public class MoveToMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButton(0))
+        /*if (Input.GetMouseButton(0))
         {
             changeToMenu = true;
+        }*/
+
+        //タッチがあるかどうか？
+        if (Input.touchCount > 0)
+        {
+
+            touch = Input.GetTouch(0);
+            //タッチ直後
+            if (touch.phase == TouchPhase.Began)
+            {
+                changeToMenu = true;
+
+            }
+
+
         }
 
         if (changeToMenu == true)

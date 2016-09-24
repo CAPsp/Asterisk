@@ -100,6 +100,7 @@ GameObject:
   - 4: {fileID: 251590752}
   - 212: {fileID: 251590753}
   - 114: {fileID: 251590754}
+  - 114: {fileID: 251590755}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -165,8 +166,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d5167169650c412b945bdf479969c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mIgnoreDistance: 1
   mMoveSpeed: 2
+  mRadius: 3
+--- !u!114 &251590755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 251590751}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2c268c6118e4849ad1efec96aa4a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &331535054
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +444,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.930933, g: 0.9852941, b: 0, a: 1}
   m_FlipX: 0

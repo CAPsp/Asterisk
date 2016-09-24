@@ -3,10 +3,16 @@ using System.Collections;
 
 public class ArrowMovement : MonoBehaviour {
 
-	[SerializeField] float mIgnoreDistance 	= 1.0f;	// タッチしても移動しない時の距離
 	[SerializeField] float mMoveSpeed 		= 2f;
+	[SerializeField] float mRadius			= 3f;				// 中心から側面までの距離
 
-	float mMovePointX = float.MaxValue;
+	float mIgnoreDistance 	= 0.2f;
+	float mMovePointX 		= float.MaxValue;
+	ArrowAttack mArrowAttack;
+
+	void Awake(){
+		mArrowAttack = GetComponent<ArrowAttack> ();
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -16,14 +22,30 @@ public class ArrowMovement : MonoBehaviour {
 			Movement ();
 		}
 
-		if (Input.touchCount > 0){// && Input.GetTouch (0).position) {
+		// debug
+		if (Input.GetKeyUp ("mouse 0")) {
+			Vector3 tmp = PointaToPosition.ChangeToPostion(Input.mousePosition);
 
-			Touch touch = Input.GetTouch(0);
-			if (Mathf.Abs (touch.position.x - transform.position.x) > mIgnoreDistance) {
-				mMovePointX = touch.position.x;
+			if (Mathf.Abs (tmp.x - transform.position.x) > mIgnoreDistance) {
+				mMovePointX = tmp.x;
 			}
+			else {
+				mArrowAttack.enabled = true;
+			}
+				
+		}
 
-			Debug.Log (Input.GetTouch (0).position);
+		if (Input.touchCount > 0){
+			
+			Touch touch = Input.GetTouch(0);
+
+			Vector3 tmp = PointaToPosition.ChangeToPostion (new Vector3(touch.position.x, 0f, 0f));
+			if (Mathf.Abs (tmp.x - transform.position.x) > mIgnoreDistance) {
+				mMovePointX = tmp.x;
+			}
+			else {
+				mArrowAttack.enabled = true;
+			}
 		}
 			
 	}
@@ -31,9 +53,9 @@ public class ArrowMovement : MonoBehaviour {
 	void Movement(){
 
 		float x = Mathf.Lerp(transform.position.x, mMovePointX, Time.deltaTime * mMoveSpeed);
-		transform.position = new Vector2(x, transform.position.y);
+		transform.position = new Vector3(x, transform.position.y, transform.position.z);
 
-		if (Mathf.Abs (mMovePointX - transform.position.x) > mIgnoreDistance) {
+		if ((Mathf.Abs (mMovePointX - transform.position.x) <= Mathf.Epsilon) || (Mathf.Abs (transform.position.x) > mRadius) ) {
 			mMovePointX = float.MaxValue;
 		}
 

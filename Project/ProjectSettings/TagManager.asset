@@ -48,3 +48,6 @@ TagManager:
   - name: Bright
     uniqueID: 523421185
     locked: 0
+  - name: secondCanvas
+    uniqueID: 1659247121
+    locked: 0

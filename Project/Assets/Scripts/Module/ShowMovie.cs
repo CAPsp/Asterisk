@@ -10,7 +10,7 @@ public class ShowMovie : MonoBehaviour {
     TextReader txtReader;
     string description;*/
     public string videoName;
-
+    public string nextScene;
 
     void Start()
     {
@@ -18,7 +18,7 @@ public class ShowMovie : MonoBehaviour {
         //StartCoroutine("LoadOpeningMovie");
         //Handheld.PlayFullScreenMovie(videoPath,Color.black,FullScreenMovieControlMode.CancelOnInput);
         Handheld.PlayFullScreenMovie(videoName, Color.black, FullScreenMovieControlMode.CancelOnInput);
-        SceneManager.LoadScene("Title");
+        SceneManager.LoadScene(nextScene);
 
     }
 

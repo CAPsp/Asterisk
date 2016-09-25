@@ -9,6 +9,7 @@ public class ArrowAttack : MonoBehaviour {
 	[SerializeField] float mSpeed = 10.0f;
 	[SerializeField] Transform mTargetTrans;
 	[SerializeField] GameObject mObjectIncludeLine;
+	[SerializeField] LayerMask mLayerMask;
 
 	Vector3 mPosition;
 	LineRenderer mFirstLine;
@@ -58,7 +59,8 @@ public class ArrowAttack : MonoBehaviour {
 		RaycastHit2D hit = 
 			Physics2D.Raycast (	vec2Pos,
 								Vec3ToVec2.GenVecFrom2Points (mTargetTrans.position, transform.position).normalized,
-								Vec3ToVec2.CalcDistanceOn2D (transform.position, mTargetTrans.position));
+								Vec3ToVec2.CalcDistanceOn2D (transform.position, mTargetTrans.position),
+								mLayerMask.value);
 
 		// 反射したかを考えてガイドラインを表示
 		if (hit.collider != null) {

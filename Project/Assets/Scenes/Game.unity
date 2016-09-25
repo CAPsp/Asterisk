@@ -153,7 +153,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 36765890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: x
   m_TagString: GameAreaX
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 152306234}
   - 61: {fileID: 152306235}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: over
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -628,6 +628,9 @@ MonoBehaviour:
   mSpeed: 10
   mTargetTrans: {fileID: 1731577156}
   mObjectIncludeLine: {fileID: 1836576373}
+  mLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!120 &251590756
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -884,7 +887,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 490858918}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: y
   m_TagString: GameAreaY
   m_Icon: {fileID: 0}
@@ -915,7 +918,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 505265781}
   - 61: {fileID: 505265782}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -998,7 +1001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1093,7 +1096,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 774102746}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1469,7 +1472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1630,7 +1633,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1447556845}
   - 61: {fileID: 1447556846}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2448,7 +2451,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1971613168}
   - 61: {fileID: 1971613169}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: under
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2548,6 +2551,7 @@ GameObject:
   - 222: {fileID: 2012269244}
   - 114: {fileID: 2012269243}
   - 114: {fileID: 2012269242}
+  - 114: {fileID: 2012269245}
   m_Layer: 5
   m_Name: ReturnTitle
   m_TagString: Untagged
@@ -2612,7 +2616,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2012269243}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2012269245}
+        m_MethodName: Push
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2012269243
@@ -2648,6 +2663,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2012269240}
+--- !u!114 &2012269245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2012269240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d3cf4838568c4f42aa18b7eb6031566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneName_: Title
+  displayImage_: {fileID: 506839668}
+  darckChangeSpeed_: 1
 --- !u!1 &2039333916
 GameObject:
   m_ObjectHideFlags: 0
@@ -2877,7 +2906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

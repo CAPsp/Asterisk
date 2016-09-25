@@ -103,6 +103,7 @@ GameObject:
   - 124: {fileID: 331535056}
   - 81: {fileID: 331535055}
   - 114: {fileID: 331535060}
+  - 114: {fileID: 331535061}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -191,6 +192,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageManagerPrefab: {fileID: 1000010029699956, guid: 682750e33874ee64d8bbf082954a9887,
     type: 2}
+--- !u!114 &331535061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 331535054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5a9a3c869912849b5330d919eaddf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &833388830
 GameObject:
   m_ObjectHideFlags: 0

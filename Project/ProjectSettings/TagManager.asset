@@ -8,6 +8,7 @@ TagManager:
   - Star
   - GameAreaY
   - Sucker
+  - Gage
   layers:
   - Default
   - TransparentFX

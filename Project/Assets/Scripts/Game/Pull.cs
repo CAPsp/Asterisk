@@ -10,12 +10,14 @@ public class Pull : MonoBehaviour {
 	[SerializeField] float mNotifiRadius 		= 1.5f;	// 主人公へのタップを検知する距離範囲
 	[SerializeField] float mDestroyLineDistance = 0.1f;
 
+	GageBar mGageBar;
 	HitPointManager mHitPointManager;
 	GameObject mStarObject;
 	bool isPulling;
 
 	void Awake(){
 		mHitPointManager 	= GetComponent<HitPointManager>();
+		mGageBar			= GameObject.FindGameObjectWithTag("Gage").GetComponent<GageBar>();
 	}
 
 	void Start(){
@@ -39,9 +41,29 @@ public class Pull : MonoBehaviour {
 			ChangeMoving();
 		}
 
+//		if (Input.touchCount > 0) {
+//
+//			Touch touch = Input.GetTouch (0);
+//			Vector3 point = PointaToPosition.ChangeToPostion(touch.position);
+//			point = new Vector3 (point.x, point.y, 0f);
+//			if ( touch.phase == TouchPhase.Moved &&
+//				 Vector3.Distance (point, GameObject.FindGameObjectWithTag("Player").transform.position) <= mNotifiRadius ){
+//
+//				isPulling = true;
+//				PullProcess ();
+//			}
+//			else if (isPulling) {	// 離した(上のif文に入ってないので)
+//				ChangeMoving();
+//			}
+//
+//		}
+
 	}
 
 	void PullProcess(){
+
+		// Power減らす
+		mGageBar.ConsumePower(Time.deltaTime * mGageBar.GetConsumePerSecond());
 
 		List<GameObject> lineList 	= mHitPointManager.GetLineList();
 		List<Vector2> vecList 		= mHitPointManager.GetHitPointList();

@@ -23,7 +23,7 @@ public class ArrowMovement : MonoBehaviour {
 		if (Input.GetKeyUp ("mouse 0")) {
 			Vector3 tmp = PointaToPosition.ChangeToPostion(Input.mousePosition);
 
-			if (tmp.y > mTouchLimitY) {
+			if (tmp.y > mTouchLimitY || mRadius < Mathf.Abs(tmp.x)) {
 				return;
 			}
 				
@@ -36,22 +36,22 @@ public class ArrowMovement : MonoBehaviour {
 				
 		}
 
-		if (Input.touchCount > 0){
-			Touch touch = Input.GetTouch(0);
-			Vector3 tmp = PointaToPosition.ChangeToPostion (new Vector3(touch.position.x, 0f, 0f));
-
-			if (tmp.y > mTouchLimitY) {
-				return;
-			}
-
-			// 移動判定
-			if (Mathf.Abs (tmp.x - transform.position.x) > mIgnoreDistance) {
-				mMovePointX = tmp.x;
-			}
-			else {	// 狙いうちに移行
-				ChangeAttack();
-			}
-		}
+//		if (Input.touchCount > 0){
+//			Touch touch = Input.GetTouch(0);
+//			Vector3 tmp = PointaToPosition.ChangeToPostion (new Vector3(touch.position.x, 0f, 0f));
+//
+//			if (tmp.y > mTouchLimitY || mRadius < Mathf.Abs(tmp.x)) {
+//				return;
+//			}
+//
+//			// 移動判定
+//			if (Mathf.Abs (tmp.x - transform.position.x) > mIgnoreDistance) {
+//				mMovePointX = tmp.x;
+//			}
+//			else  if(touch.phase == TouchPhase.Ended){	// 狙いうちに移行
+//				ChangeAttack();
+//			}
+//		}
 			
 	}
 

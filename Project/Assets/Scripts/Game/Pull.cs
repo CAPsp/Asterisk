@@ -86,7 +86,14 @@ public class Pull : MonoBehaviour {
 			lineList.RemoveAt (lineList.Count - 1);
 
 			if (vecList.Count <= 0) {
-				ChangeMoving ();
+
+				// 引き寄せたものがお目当の星だったら
+				if(mStarObject.tag == "TargetStar"){
+					StageClear ();
+				}
+				else{
+					ChangeMoving ();
+				}
 			}
 		}
 
@@ -105,6 +112,14 @@ public class Pull : MonoBehaviour {
 
 	// ゲームーオーバー判定
 	void ChangeGameOver(){
+		mHitPointManager.Reset ();
+		GameObject.FindGameObjectWithTag ("AllParentObject").SetActive (false);
+		Destroy (gameObject);
+	}
+
+	// ステージクリア判定
+	void StageClear(){
+		Clear.FinishGame ();
 		mHitPointManager.Reset ();
 		GameObject.FindGameObjectWithTag ("AllParentObject").SetActive (false);
 		Destroy (gameObject);

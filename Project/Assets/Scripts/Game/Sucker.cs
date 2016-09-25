@@ -66,7 +66,7 @@ public class Sucker : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other){
 		
 		// 星にぶつかったら
-		if (other.gameObject.tag == "Star") {
+		if (other.gameObject.tag == "Star" || other.gameObject.tag == "TargetStar") {
 			
 			mRigidbody.velocity = Vector2.zero;
 

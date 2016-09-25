@@ -5,6 +5,7 @@ public class GageBar : MonoBehaviour {
 
 	[SerializeField] float mConsumePerSecond = 50f;	// 1秒で何power減るか
 	[SerializeField] float mLimitPower = 550f;
+	[SerializeField] FadeIn mFadeIn;
 
 	RectTransform mRectTransform;
 	float mPower;
@@ -20,7 +21,7 @@ public class GageBar : MonoBehaviour {
 		// GameOver
 		if (mLimitPower <= mPower) {
 			mRectTransform.sizeDelta = new Vector2(mLimitPower, mRectTransform.sizeDelta.y);
-			Debug.Log ("GAMEOVER");
+			mFadeIn.enabled = true;
 			return;
 		}
 

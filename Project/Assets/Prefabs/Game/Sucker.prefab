@@ -24,6 +24,7 @@ GameObject:
   - 212: {fileID: 212000010584846812}
   - 114: {fileID: 114000013069416352}
   - 114: {fileID: 114000011038850462}
+  - 114: {fileID: 114000010159384596}
   m_Layer: 0
   m_Name: Sucker
   m_TagString: Untagged
@@ -75,6 +76,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &114000010159384596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011782144436}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2e686de53c74674a3eb6111b003b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mPullSpeed: 1.5
+  mNotifiRadius: 1.5
 --- !u!114 &114000011038850462
 MonoBehaviour:
   m_ObjectHideFlags: 1

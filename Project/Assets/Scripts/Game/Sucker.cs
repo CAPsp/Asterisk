@@ -9,37 +9,41 @@ public class Sucker : MonoBehaviour {
 
 	Rigidbody2D mRigidbody;
 	HitPointManager mHitPointManager;
-	List<GameObject> mLineList;
+	Pull mPull;
 
 	void Awake(){
 		mRigidbody 			= GetComponent<Rigidbody2D>();
 		mHitPointManager 	= GetComponent<HitPointManager>();
+		mPull 				= GetComponent<Pull>();
+	}
 
-		mLineList  = new List<GameObject>();
+	void Start(){
 		GameObject newPrefab = Instantiate (mPrefabLine, Vector3.zero, Quaternion.identity) as GameObject;
 		newPrefab.GetComponent<LineRenderer> ().SetPosition (0, transform.position + Vector3.back);
-		mLineList.Add (newPrefab);
+		mHitPointManager.AddLineObject (newPrefab);
+		mHitPointManager.AddHitPoint (Vec3ToVec2.GenV3ToV2(transform.position));
 	}
 
 	void Update(){
 
 		// 当たった場所があったら線を引く。(そのためには前に当たった場所を順に追跡する)
-		List<Vector2> tmp = mHitPointManager.GetHitPointList();
-		for(int i = 0; i < tmp.Count; i++){
+		List<Vector2> hitList 		= mHitPointManager.GetHitPointList();
+		List<GameObject> lineList 	= mHitPointManager.GetLineList();
+		for(int i = 1; i < hitList.Count; i++){
 
-			if (i + 2 > mLineList.Count) {
-				mLineList [mLineList.Count - 1].GetComponent<LineRenderer>().SetPosition (1, new Vector3(tmp[i].x, 	tmp[i].y,	-1));
+			if (i + 2 > lineList.Count) {
+				lineList[lineList.Count - 1].GetComponent<LineRenderer>().SetPosition (1, new Vector3(hitList[i].x, hitList[i].y, -1));
 
 				GameObject newPrefab = Instantiate (mPrefabLine, Vector3.zero, Quaternion.identity) as GameObject;
-				newPrefab.GetComponent<LineRenderer> ().SetPosition (0, new Vector3(tmp[i].x, 	tmp[i].y,	-1));
+				newPrefab.GetComponent<LineRenderer> ().SetPosition (0, new Vector3(hitList[i].x, hitList[i].y,	-1));
 
-				mLineList.Add (newPrefab);
+				lineList.Add (newPrefab);
 			}
 
 		}
 
 		// 最後に当たった場所からSuckerへの線を引く
-		mLineList[mLineList.Count - 1].GetComponent<LineRenderer>().SetPosition(1, transform.position + Vector3.back);
+		lineList[lineList.Count - 1].GetComponent<LineRenderer>().SetPosition(1, transform.position + Vector3.back);
 
 	}
 
@@ -61,7 +65,14 @@ public class Sucker : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other){
 
 		if (other.gameObject.tag == "Star") {
+			
 			mRigidbody.velocity = Vector2.zero;
+
+			List<GameObject> lineList 	= mHitPointManager.GetLineList();
+			lineList[lineList.Count - 1].GetComponent<LineRenderer>().SetPosition(1, transform.position + Vector3.back);
+
+			mPull.Initialize (other);
+			mPull.enabled = true;
 		}
 
 	}

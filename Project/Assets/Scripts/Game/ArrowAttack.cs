@@ -94,6 +94,8 @@ public class ArrowAttack : MonoBehaviour {
 		Vector3 diff = (mTargetTrans.position - transform.position);
 		diff = new Vector3 (diff.x, diff.y, 0f);
 		sucker.GetComponent<Rigidbody2D> ().velocity = mSpeed * diff.normalized;
+
+		this.enabled = false;
 	}
 
 }

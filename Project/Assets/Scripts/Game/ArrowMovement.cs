@@ -36,7 +36,6 @@ public class ArrowMovement : MonoBehaviour {
 		}
 
 		if (Input.touchCount > 0){
-			
 			Touch touch = Input.GetTouch(0);
 
 			Vector3 tmp = PointaToPosition.ChangeToPostion (new Vector3(touch.position.x, 0f, 0f));

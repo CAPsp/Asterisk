@@ -10,12 +10,14 @@ public class Pull : MonoBehaviour {
 	[SerializeField] float mNotifiRadius 		= 1.5f;	// 主人公へのタップを検知する距離範囲
 	[SerializeField] float mDestroyLineDistance = 0.1f;
 
+	GageBar mGageBar;
 	HitPointManager mHitPointManager;
 	GameObject mStarObject;
 	bool isPulling;
 
 	void Awake(){
 		mHitPointManager 	= GetComponent<HitPointManager>();
+		mGageBar			= GameObject.FindGameObjectWithTag("Gage").GetComponent<GageBar>();
 	}
 
 	void Start(){
@@ -42,6 +44,9 @@ public class Pull : MonoBehaviour {
 	}
 
 	void PullProcess(){
+
+		// Power減らす
+		mGageBar.ConsumePower(Time.deltaTime * mGageBar.GetConsumePerSecond());
 
 		List<GameObject> lineList 	= mHitPointManager.GetLineList();
 		List<Vector2> vecList 		= mHitPointManager.GetHitPointList();

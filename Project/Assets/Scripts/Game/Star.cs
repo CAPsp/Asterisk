@@ -8,8 +8,6 @@ public class Star : MonoBehaviour {
 
 		if (other.gameObject.tag == gameObject.tag) {
 
-			Debug.Log ("True");
-
 			GameObject tmp = GameObject.FindGameObjectWithTag ("Sucker");
 			if (tmp != null) {
 				tmp.GetComponent<Pull> ().ChangeMoving ();

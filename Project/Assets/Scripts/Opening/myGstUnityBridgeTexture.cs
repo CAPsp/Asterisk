@@ -22,6 +22,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 using System.Runtime.InteropServices;
+using System.IO;
 
 [Serializable]
 public class GstUnityBridgeCroppingParams
@@ -112,7 +113,7 @@ public class GstUnityBridgeEventParams
     public QosEvent m_OnQOS;
 }
 
-public class GstUnityBridgeTexture : MonoBehaviour
+public class myGstUnityBridgeTexture : MonoBehaviour
 {
 #if !EXPERIMENTAL
     [HideInInspector]
@@ -127,6 +128,7 @@ public class GstUnityBridgeTexture : MonoBehaviour
     [Tooltip("Play media from the beginning when it reaches the end")]
     public bool m_Loop = false;
     [Tooltip("URI to get the stream from")]
+    public string fromPath = "";
     public string m_URI = "";
     [Tooltip("Zero-based index of the video stream to use (-1 disables video)")]
     public int m_VideoIndex = 0;
@@ -169,7 +171,7 @@ public class GstUnityBridgeTexture : MonoBehaviour
 
     private static void OnFinish(IntPtr p)
     {
-        GstUnityBridgeTexture self = ((GCHandle)p).Target as GstUnityBridgeTexture;
+        myGstUnityBridgeTexture self = ((GCHandle)p).Target as myGstUnityBridgeTexture;
 
         self.m_EventProcessor.QueueEvent(() =>
         {
@@ -186,7 +188,7 @@ public class GstUnityBridgeTexture : MonoBehaviour
 
     private static void OnError(IntPtr p, string message)
     {
-        GstUnityBridgeTexture self = ((GCHandle)p).Target as GstUnityBridgeTexture;
+        myGstUnityBridgeTexture self = ((GCHandle)p).Target as myGstUnityBridgeTexture;
 
         if (self.m_Events.m_OnError != null)
         {
@@ -201,7 +203,7 @@ public class GstUnityBridgeTexture : MonoBehaviour
         long current_jitter, ulong current_running_time, ulong current_stream_time, ulong current_timestamp,
         double proportion, ulong processed, ulong dropped)
     {
-        GstUnityBridgeTexture self = ((GCHandle)p).Target as GstUnityBridgeTexture;
+        myGstUnityBridgeTexture self = ((GCHandle)p).Target as myGstUnityBridgeTexture;
 
         if (self.m_Events.m_OnQOS != null)
         {
@@ -271,11 +273,26 @@ public class GstUnityBridgeTexture : MonoBehaviour
 
     }
 
+    void myCopy(string fromPath, string m_URI)
+    {
+        fromPath = Application.streamingAssetsPath + "/opening";
+        WWW www = new WWW(fromPath);
+        while(!www.isDone)
+        {
+
+        }
+
+        m_URI = Application.dataPath;
+        File.WriteAllBytes(m_URI, www.bytes);
+        //m_URI = m_URI + "/Blurry-Lights.mp4";
+    }
+
     void Start()
     {
         if (m_InitializeOnStart && !m_HasBeenInitialized)
         {
             Initialize();
+            myCopy(fromPath, m_URI);
             Setup(m_URI, m_VideoIndex, m_AudioIndex);
             Play();
         }

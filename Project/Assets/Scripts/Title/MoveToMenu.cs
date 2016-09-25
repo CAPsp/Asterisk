@@ -46,11 +46,6 @@ public class MoveToMenu : MonoBehaviour {
 
             if(currentRemainTime <= 0.0f)
             {
-                Debug.Log("Debug Start");
-                //ストリーミングアセットのパス
-                Debug.Log("Streaming Path" + Application.streamingAssetsPath);
-                //Unityが利用するデータが保存されるパス
-                Debug.Log("Data Path" + Application.dataPath);
                 SceneManager.LoadScene("Menu");
                 return;
             }

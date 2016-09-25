@@ -27,7 +27,7 @@ GameObject:
   - 114: {fileID: 114000010159384596}
   m_Layer: 0
   m_Name: Sucker
-  m_TagString: Untagged
+  m_TagString: Sucker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,6 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mPullSpeed: 1.5
   mNotifiRadius: 1.5
+  mDestroyLineDistance: 0.1
 --- !u!114 &114000011038850462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,6 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c43c5755ec444c59f2a3291126b86e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mHitPoints: []
+  mLineList: []
 --- !u!114 &114000013069416352
 MonoBehaviour:
   m_ObjectHideFlags: 1

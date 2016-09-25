@@ -72,7 +72,7 @@ public class Pull : MonoBehaviour {
 	}
 
 	// 移動モードに移行
-	void ChangeMoving(){
+	public void ChangeMoving(){
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<ArrowMovement> ().enabled = true;
 		mHitPointManager.Reset ();
 		Destroy (gameObject);

@@ -23,22 +23,8 @@ public class Sucker : MonoBehaviour {
 	}
 
 	void Update(){
-
-		// 当たった場所があったら線を引く。(そのためには前に当たった場所を順に追跡する)
-//		List<Vector2> hitList 		= mHitPointManager.GetHitPointList();
+		
 		List<GameObject> lineList 	= mHitPointManager.GetLineList();
-//		for(int i = 1; i < hitList.Count; i++){
-//
-//			if (i + 2 > lineList.Count) {
-//				lineList[lineList.Count - 1].GetComponent<LineRenderer>().SetPosition (1, new Vector3(hitList[i].x, hitList[i].y, -1));
-//
-//				GameObject newPrefab = Instantiate (mPrefabLine, Vector3.zero, Quaternion.identity) as GameObject;
-//				newPrefab.GetComponent<LineRenderer> ().SetPosition (0, new Vector3(hitList[i].x, hitList[i].y,	-1));
-//
-//				lineList.Add (newPrefab);
-//			}
-//
-//		}
 
 		// 最後に当たった場所からSuckerへの線を引く
 		lineList[lineList.Count - 1].GetComponent<LineRenderer>().SetPosition(1, transform.position + Vector3.back);
@@ -78,7 +64,7 @@ public class Sucker : MonoBehaviour {
 
 	// ぶつかったら
 	void OnCollisionEnter2D(Collision2D other){
-
+		
 		// 星にぶつかったら
 		if (other.gameObject.tag == "Star") {
 			

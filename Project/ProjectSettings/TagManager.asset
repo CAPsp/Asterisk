@@ -7,6 +7,7 @@ TagManager:
   - GameAreaX
   - Star
   - GameAreaY
+  - Sucker
   layers:
   - Default
   - TransparentFX

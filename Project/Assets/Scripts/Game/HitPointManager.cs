@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class HitPointManager : MonoBehaviour{
 
-	public List<Vector2> mHitPoints;
-	public List<GameObject> mLineList;
+	List<Vector2> mHitPoints;
+	List<GameObject> mLineList;
 
 	public void Awake(){
 		mHitPoints 	= new List<Vector2> ();

@@ -10,15 +10,18 @@ public class ArrowAttack : MonoBehaviour {
 	[SerializeField] Transform mTargetTrans;
 	[SerializeField] GameObject mObjectIncludeLine;
 	[SerializeField] LayerMask mLayerMask;
+	[SerializeField] GameObject mShootPoint;
 
 	Vector3 mPosition;
 	LineRenderer mFirstLine;
 
 	void Awake(){
-		mFirstLine		= GetComponent<LineRenderer>();
+		mFirstLine	= GetComponent<LineRenderer>();
 	}
 
 	void Update(){
+
+		mShootPoint.GetComponent<SpriteRenderer>().enabled = true;
 
 		// debug
 		if (Input.GetKey ("mouse 0")) {
@@ -95,10 +98,10 @@ public class ArrowAttack : MonoBehaviour {
 		mFirstLine.enabled = false;
 		mObjectIncludeLine.SetActive(false);
 
-		Transform transform = (gameObject.GetComponentsInChildren<Transform>())[1];
-		GameObject sucker 	= Instantiate (mPrefabSucker, transform.position, Quaternion.identity) as GameObject;
+		//Transform transform = (gameObject.GetComponentsInChildren<Transform>())[1];
+		GameObject sucker 	= Instantiate (mPrefabSucker, mShootPoint.transform.position, Quaternion.identity) as GameObject;
 
-		Vector3 diff = (mTargetTrans.position - transform.position);
+		Vector3 diff = (mTargetTrans.position - mShootPoint.transform.position);
 		diff = new Vector3 (diff.x, diff.y, 0f);
 		sucker.GetComponent<Rigidbody2D> ().velocity = mSpeed * diff.normalized;
 

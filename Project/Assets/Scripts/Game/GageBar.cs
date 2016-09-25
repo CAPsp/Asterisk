@@ -18,9 +18,10 @@ public class GageBar : MonoBehaviour {
 		mPower += value;
 
 		// GameOver
-		if (mLimitPower >= mPower) {
+		if (mLimitPower <= mPower) {
 			mRectTransform.sizeDelta = new Vector2(mLimitPower, mRectTransform.sizeDelta.y);
 			Debug.Log ("GAMEOVER");
+			return;
 		}
 
 		mRectTransform.sizeDelta = new Vector2(mPower, mRectTransform.sizeDelta.y);

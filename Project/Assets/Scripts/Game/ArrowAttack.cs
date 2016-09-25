@@ -27,6 +27,17 @@ public class ArrowAttack : MonoBehaviour {
 			Fire ();
 		}
 
+//		if (Input.touchCount > 0) {
+//			Touch touch = Input.GetTouch (0);
+//
+//			if (touch.phase == TouchPhase.Moved) {
+//				Preparation ();
+//			}
+//			else if (touch.phase == TouchPhase.Ended) {
+//				Fire ();
+//			}
+//		}
+
 	}
 
 	void Preparation(){

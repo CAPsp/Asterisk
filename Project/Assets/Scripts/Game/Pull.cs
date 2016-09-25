@@ -41,6 +41,23 @@ public class Pull : MonoBehaviour {
 			ChangeMoving();
 		}
 
+//		if (Input.touchCount > 0) {
+//
+//			Touch touch = Input.GetTouch (0);
+//			Vector3 point = PointaToPosition.ChangeToPostion(touch.position);
+//			point = new Vector3 (point.x, point.y, 0f);
+//			if ( touch.phase == TouchPhase.Moved &&
+//				 Vector3.Distance (point, GameObject.FindGameObjectWithTag("Player").transform.position) <= mNotifiRadius ){
+//
+//				isPulling = true;
+//				PullProcess ();
+//			}
+//			else if (isPulling) {	// 離した(上のif文に入ってないので)
+//				ChangeMoving();
+//			}
+//
+//		}
+
 	}
 
 	void PullProcess(){

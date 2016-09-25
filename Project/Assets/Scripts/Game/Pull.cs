@@ -63,7 +63,10 @@ public class Pull : MonoBehaviour {
 	void PullProcess(){
 
 		// Power減らす
-		mGageBar.ConsumePower(Time.deltaTime * mGageBar.GetConsumePerSecond());
+		if (!mGageBar.ConsumePower (Time.deltaTime * mGageBar.GetConsumePerSecond ())) {
+			ChangeGameOver ();
+			return;
+		}
 
 		List<GameObject> lineList 	= mHitPointManager.GetLineList();
 		List<Vector2> vecList 		= mHitPointManager.GetHitPointList();
@@ -97,6 +100,13 @@ public class Pull : MonoBehaviour {
 	public void ChangeMoving(){
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<ArrowMovement> ().enabled = true;
 		mHitPointManager.Reset ();
+		Destroy (gameObject);
+	}
+
+	// ゲームーオーバー判定
+	void ChangeGameOver(){
+		mHitPointManager.Reset ();
+		GameObject.FindGameObjectWithTag ("AllParentObject").SetActive (false);
 		Destroy (gameObject);
 	}
 

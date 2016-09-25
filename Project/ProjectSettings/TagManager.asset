@@ -9,6 +9,7 @@ TagManager:
   - GameAreaY
   - Sucker
   - Gage
+  - AllParentObject
   layers:
   - Default
   - TransparentFX

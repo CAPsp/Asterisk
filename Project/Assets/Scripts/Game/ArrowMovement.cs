@@ -5,14 +5,11 @@ public class ArrowMovement : MonoBehaviour {
 
 	[SerializeField] float mMoveSpeed 		= 2f;
 	[SerializeField] float mRadius			= 3f;				// 中心から側面までの距離
+	[SerializeField] float mTouchLimitY		= -4f;				// これより下をタッチしたら移動判定
 
 	float mIgnoreDistance 	= 0.2f;
 	float mMovePointX 		= float.MaxValue;
-	ArrowAttack mArrowAttack;
 
-	void Awake(){
-		mArrowAttack = GetComponent<ArrowAttack> ();
-	}
 
 	// Update is called once per frame
 	void Update () {
@@ -26,24 +23,33 @@ public class ArrowMovement : MonoBehaviour {
 		if (Input.GetKeyUp ("mouse 0")) {
 			Vector3 tmp = PointaToPosition.ChangeToPostion(Input.mousePosition);
 
+			if (tmp.y > mTouchLimitY) {
+				return;
+			}
+				
 			if (Mathf.Abs (tmp.x - transform.position.x) > mIgnoreDistance) {
 				mMovePointX = tmp.x;
 			}
 			else {
-				mArrowAttack.enabled = true;
+				ChangeAttack();
 			}
 				
 		}
 
 		if (Input.touchCount > 0){
 			Touch touch = Input.GetTouch(0);
-
 			Vector3 tmp = PointaToPosition.ChangeToPostion (new Vector3(touch.position.x, 0f, 0f));
+
+			if (tmp.y > mTouchLimitY) {
+				return;
+			}
+
+			// 移動判定
 			if (Mathf.Abs (tmp.x - transform.position.x) > mIgnoreDistance) {
 				mMovePointX = tmp.x;
 			}
-			else {
-				mArrowAttack.enabled = true;
+			else {	// 狙いうちに移行
+				ChangeAttack();
 			}
 		}
 			
@@ -58,5 +64,11 @@ public class ArrowMovement : MonoBehaviour {
 			mMovePointX = float.MaxValue;
 		}
 
+	}
+
+	// 狙い撃ちに移行
+	void ChangeAttack(){
+		GetComponent<ArrowAttack> ().enabled = true;
+		this.enabled = false;
 	}
 }

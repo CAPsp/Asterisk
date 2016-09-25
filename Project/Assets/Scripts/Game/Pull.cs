@@ -11,20 +11,16 @@ public class Pull : MonoBehaviour {
 	[SerializeField] float mDestroyLineDistance = 0.1f;
 
 	HitPointManager mHitPointManager;
-	Sucker mSucker;
 	GameObject mStarObject;
-	Transform mPlayerTransform;
-	bool isPulling = false;
+	bool isPulling;
 
 	void Awake(){
 		mHitPointManager 	= GetComponent<HitPointManager>();
-		mSucker				= GetComponent<Sucker>();
-		mPlayerTransform	= GameObject.FindGameObjectWithTag("Player").transform;
 	}
 
 	void Start(){
-		mSucker.enabled = false;
 		GetComponent<SpriteRenderer> ().enabled = false;
+		isPulling = false;
 	}
 	
 	// Update is called once per frame
@@ -34,13 +30,13 @@ public class Pull : MonoBehaviour {
 		point = new Vector3(point.x, point.y, 0f);
 
 		if ( Input.GetKey ("mouse 0") &&
-			Vector3.Distance (point, mPlayerTransform.position) <= mNotifiRadius ){
+			 Vector3.Distance (point, GameObject.FindGameObjectWithTag("Player").transform.position) <= mNotifiRadius ){
 
 			isPulling = true;
 			PullProcess ();
 		}
-		else if (isPulling) {	// 離した
-			Destroy(gameObject);
+		else if (isPulling) {	// 離した(上のif文に入ってないので)
+			ChangeMoving();
 		}
 
 	}
@@ -65,14 +61,21 @@ public class Pull : MonoBehaviour {
 			lineList.RemoveAt (lineList.Count - 1);
 
 			if (vecList.Count <= 0) {
-				Destroy (gameObject);
+				ChangeMoving ();
 			}
 		}
 
 	}
 
-	public void Initialize(Collision2D star){
-		mStarObject = star.gameObject;
+	public void Initialize(GameObject star){
+		mStarObject = star;
+	}
+
+	// 移動モードに移行
+	void ChangeMoving(){
+		GameObject.FindGameObjectWithTag ("Player").GetComponent<ArrowMovement> ().enabled = true;
+		mHitPointManager.Reset ();
+		Destroy (gameObject);
 	}
 
 }

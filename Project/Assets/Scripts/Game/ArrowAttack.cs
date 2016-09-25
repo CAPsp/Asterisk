@@ -10,17 +10,11 @@ public class ArrowAttack : MonoBehaviour {
 	[SerializeField] Transform mTargetTrans;
 	[SerializeField] GameObject mObjectIncludeLine;
 
-	ArrowMovement mArrowMovement;
 	Vector3 mPosition;
 	LineRenderer mFirstLine;
 
 	void Awake(){
-		mArrowMovement 	= GetComponent<ArrowMovement> ();
 		mFirstLine		= GetComponent<LineRenderer>();
-	}
-
-	void Start(){
-		mArrowMovement.enabled = false;
 	}
 
 	void Update(){
@@ -96,6 +90,7 @@ public class ArrowAttack : MonoBehaviour {
 		sucker.GetComponent<Rigidbody2D> ().velocity = mSpeed * diff.normalized;
 
 		this.enabled = false;
+
 	}
 
 }

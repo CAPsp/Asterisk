@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class HitPointManager : MonoBehaviour{
 
-	List<Vector2> mHitPoints;
-	List<GameObject> mLineList;
+	public List<Vector2> mHitPoints;
+	public List<GameObject> mLineList;
 
 	public void Awake(){
 		mHitPoints 	= new List<Vector2> ();
@@ -28,4 +28,19 @@ public class HitPointManager : MonoBehaviour{
 		return mLineList;
 	}
 
+	public void ResetLineList(){
+		foreach(GameObject obj in mLineList){
+			Destroy (obj);
+		}
+		mLineList.Clear ();
+	}
+
+	public void ResetHitPoint(){
+		mHitPoints.Clear ();
+	}
+
+	public void Reset(){
+		ResetLineList ();
+		ResetHitPoint ();
+	}
 }

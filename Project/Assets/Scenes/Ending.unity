@@ -102,6 +102,7 @@ GameObject:
   - 92: {fileID: 183201737}
   - 124: {fileID: 183201736}
   - 81: {fileID: 183201735}
+  - 114: {fileID: 183201740}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -138,8 +139,8 @@ Camera:
   m_GameObject: {fileID: 183201734}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -177,3 +178,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &183201740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 183201734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 680790c2e15bed740a53f9ed1e764405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoName: opmovie.mp4
+  nextScene: Title

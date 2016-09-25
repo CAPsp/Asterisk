@@ -13,6 +13,8 @@ public class ButtonBehavior : MonoBehaviour {
     private float currentRemainTime;
     private float red, green, blue;
     private Image imageComponet;
+    public AudioClip audioClip;
+    private AudioSource audioSource;
 
     // Use this for initialization
     void Start () {
@@ -21,6 +23,7 @@ public class ButtonBehavior : MonoBehaviour {
         red = imageComponet.color.r;
         green = imageComponet.color.g;
         blue = imageComponet.color.b;
+        audioSource = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -44,5 +47,6 @@ public class ButtonBehavior : MonoBehaviour {
     public void onClick()
     {
         changeToGame = true;
+        audioSource.Play();
     }
 }

@@ -9,13 +9,16 @@ public class MoveToMenu : MonoBehaviour {
     private float currentRemainTime;
     private float red, green, blue;
     private Touch touch;
+    public AudioClip audioClip;
+    private AudioSource audioSource;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         currentRemainTime = fadeTime;
         red = GetComponent<Image>().color.r;
         green = GetComponent<Image>().color.g;
         blue = GetComponent<Image>().color.b;
+        audioSource = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -33,7 +36,9 @@ public class MoveToMenu : MonoBehaviour {
             //タッチ直後
             if (touch.phase == TouchPhase.Began)
             {
+                
                 changeToMenu = true;
+                audioSource.Play();
 
             }
 

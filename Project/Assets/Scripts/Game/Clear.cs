@@ -15,6 +15,11 @@ public class Clear : MonoBehaviour {
 	void Update () {
 
 		if (mIsClear) {
+			AudioSource audio = GameObject.FindGameObjectWithTag ("BGM").GetComponent<AudioSource> ();
+			audio.Stop();
+			audio.clip = GetComponent<AudioSource> ().clip;
+			audio.Play();
+
 			mClearUI.SetActive (true);
 			Destroy (gameObject);
 		}

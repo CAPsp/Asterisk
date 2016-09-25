@@ -11,6 +11,7 @@ TagManager:
   - Gage
   - AllParentObject
   - TargetStar
+  - BGM
   layers:
   - Default
   - TransparentFX

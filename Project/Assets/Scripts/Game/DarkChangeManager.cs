@@ -20,6 +20,12 @@ public class DarkChangeManager : MonoBehaviour {
 			
 			if (mDarkChange.CallAtUpdateToBlack ()) {
 				mGameOver.SetActive (true);
+
+				AudioSource audio = GameObject.FindGameObjectWithTag ("BGM").GetComponent<AudioSource> ();
+				audio.Stop();
+				audio.clip = GetComponent<AudioSource> ().clip;
+				audio.Play();
+
 				mWillDark = false;
 			}
 		}

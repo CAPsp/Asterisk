@@ -9,6 +9,7 @@ public class ButtonSelect : MonoBehaviour {
 	void Start () {
         //Manager = GameObject.Find("StageManager");
         //NumStage nStage = Manager.GetComponent<NumStage>();
+        Debug.Log(NumStage.numberOfStage);
         switch (NumStage.numberOfStage)
         {
             case 1:

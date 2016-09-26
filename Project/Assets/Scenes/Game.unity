@@ -3277,7 +3277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f75eebe7315fd4c56b301e2200e86b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName_: Mennu
+  nextSceneName_: Menu
   displayImage_: {fileID: 506839668}
   darckChangeSpeed_: 1
 --- !u!1 &2063337122

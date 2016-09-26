@@ -189,5 +189,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 680790c2e15bed740a53f9ed1e764405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoName: opmovie.mp4
+  videoName: edmovie.mp4
   nextScene: Title

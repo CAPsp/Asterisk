@@ -21,7 +21,7 @@ public class TouchParticle : MonoBehaviour {
             touch = Input.GetTouch(0);
             if(touch.phase == TouchPhase.Began)
             {
-                Vector3 touchPoint_screen = new Vector3(touch.position.x, touch.position.y, 0);
+                Vector3 touchPoint_screen = new Vector3(touch.position.x, touch.position.y, 5);
                 Vector3 touchPoint_world = Camera.main.ScreenToWorldPoint(touchPoint_screen);
                 Instantiate(touchEffect, touchPoint_world, Quaternion.identity);
             }

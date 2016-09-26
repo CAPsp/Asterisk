@@ -25,6 +25,7 @@ GameObject:
   - 114: {fileID: 114000013069416352}
   - 114: {fileID: 114000011038850462}
   - 114: {fileID: 114000010159384596}
+  - 82: {fileID: 82000014038222800}
   m_Layer: 0
   m_Name: Sucker
   m_TagString: Sucker
@@ -76,6 +77,80 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!82 &82000014038222800
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011782144436}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114000010159384596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -90,6 +165,7 @@ MonoBehaviour:
   mPullSpeed: 1.5
   mNotifiRadius: 1.5
   mDestroyLineDistance: 0.1
+  mPullSE: {fileID: 8300000, guid: f469f2d92c7bf4a2eaf04d8ecc0da2ce, type: 3}
 --- !u!114 &114000011038850462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,6 +190,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mPrefabLine: {fileID: 1000012621981602, guid: c49bc236ba68d40a3a3984e86cad3d66,
     type: 2}
+  mReflecStarSE: {fileID: 8300000, guid: f4fcc9ebef4c94709b72ef44916b2207, type: 3}
+  mMobStarSE: {fileID: 8300000, guid: 36350cd894db64cfb9dd70e928294941, type: 3}
+  mTargetStarSE: {fileID: 8300000, guid: cf4388b5c3a664032898ed5d9cafee84, type: 3}
 --- !u!212 &212000010584846812
 SpriteRenderer:
   m_ObjectHideFlags: 1

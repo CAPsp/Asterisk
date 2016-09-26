@@ -9,6 +9,7 @@ public class Pull : MonoBehaviour {
 	[SerializeField] float mPullSpeed 			= 1.5f;
 	[SerializeField] float mNotifiRadius 		= 1.5f;	// 主人公へのタップを検知する距離範囲
 	[SerializeField] float mDestroyLineDistance = 0.1f;
+	[SerializeField] AudioClip mPullSE;
 
 	GageBar mGageBar;
 	HitPointManager mHitPointManager;
@@ -61,6 +62,10 @@ public class Pull : MonoBehaviour {
 	}
 
 	void PullProcess(){
+
+		if (!AudioManager.isPlaying (GetComponent<AudioSource>(), mPullSE)) {
+			AudioManager.Play (GetComponent<AudioSource> (), mPullSE);
+		}
 
 		// Power減らす
 		if (!mGageBar.ConsumePower (Time.deltaTime * mGageBar.GetConsumePerSecond ())) {

@@ -95,6 +95,8 @@ public class ArrowAttack : MonoBehaviour {
 
 	void Fire(){
 
+		GetComponent<AudioSource> ().Play ();
+
 		mFirstLine.enabled = false;
 		mObjectIncludeLine.SetActive(false);
 

@@ -6,14 +6,19 @@ using Original.Util;
 public class Sucker : MonoBehaviour {
 
 	[SerializeField] GameObject mPrefabLine;
+	[SerializeField] AudioClip mReflecStarSE;
+	[SerializeField] AudioClip mMobStarSE;
+	[SerializeField] AudioClip mTargetStarSE;
 
 	Rigidbody2D mRigidbody;
 	HitPointManager mHitPointManager;
 	float mSpeed;
+	AudioSource mAudioSource;
 
 	void Awake(){
 		mRigidbody 			= GetComponent<Rigidbody2D>();
 		mHitPointManager 	= GetComponent<HitPointManager>();
+		mAudioSource		= GetComponent<AudioSource>();
 	}
 
 	void Start(){
@@ -63,6 +68,8 @@ public class Sucker : MonoBehaviour {
 		// 反射星にぶつかったら
 		else if(other.gameObject.tag == "ReflectStar"){
 
+			AudioManager.Play(mAudioSource, mReflecStarSE);
+
 			float x = transform.position.x - other.transform.position.x;
 
 			float rad;
@@ -100,8 +107,16 @@ public class Sucker : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other){
 		
 		// モブ、目標星にぶつかったら
-		if (other.gameObject.tag == "Star" || other.gameObject.tag == "TargetStar") {
-			
+		string tag = other.gameObject.tag;
+		if (tag == "Star" || tag == "TargetStar") {
+
+			if (other.gameObject.tag == "Star") {
+				AudioManager.Play(mAudioSource, mMobStarSE);
+			}
+			else {
+				AudioManager.Play(mAudioSource, mTargetStarSE);
+			}
+
 			mRigidbody.velocity = Vector2.zero;
 
 			List<GameObject> lineList = mHitPointManager.GetLineList();
@@ -125,6 +140,7 @@ public class Sucker : MonoBehaviour {
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<ArrowMovement> ().enabled = true;
 		Destroy (gameObject);
 	}
+
 //
 ////	void RealCalc(){
 //		Vector2 pointInColl = other.contacts[0].point - Vec3ToVec2.GenV3ToV2 (other.collider.bounds.center);

@@ -1,9 +1,17 @@
 fileFormatVersion: 2
 guid: 3e45b6f295ca84662be59221d649e0e5
-timeCreated: 1474786677
+timeCreated: 1474848671
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: reflectstar_0
+    21300002: reflectstar_1
+    21300004: reflectstar_2
+    21300006: reflectstar_3
+    21300008: reflectstar_4
+    21300010: reflectstar_5
+    21300012: reflectstar_6
+    21300014: reflectstar_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +38,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +46,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +59,111 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: reflectstar_0
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 2459
+        width: 858
+        height: 902
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: reflectstar_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 1425
+        width: 943
+        height: 978
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: reflectstar_2
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 1468
+        width: 908
+        height: 921
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: reflectstar_3
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1427
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: reflectstar_4
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 410
+        width: 915
+        height: 921
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: reflectstar_5
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 356
+        width: 1005
+        height: 922
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: reflectstar_6
+      rect:
+        serializedVersion: 2
+        x: 1710
+        y: 1274
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: reflectstar_7
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 934
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

@@ -11,6 +11,7 @@ public class ClearToEnding : Clear {
 	WhiteChange mWhiteChange;
 
 	void Awake(){
+		Clear.mIsClear = false;
 		mWhiteChange = new WhiteChange (mDisplayEffect.GetComponent<Image>(), 0.15f);
 	}
 

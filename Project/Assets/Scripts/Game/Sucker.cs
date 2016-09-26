@@ -26,12 +26,12 @@ public class Sucker : MonoBehaviour {
 	}
 
 	void Update(){
-
-		Debug.Log (mRigidbody.velocity);
-
+		
 		// 無理やり速度を一定にする
-		if (mSpeed != mRigidbody.velocity.magnitude) {
+		if (mSpeed - mRigidbody.velocity.magnitude > Mathf.Epsilon) {
+			Debug.Log (mRigidbody.velocity.normalized);
 			mRigidbody.velocity = mSpeed * mRigidbody.velocity.normalized;
+			Debug.Log (mRigidbody.velocity.normalized);
 		}
 
 		List<GameObject> lineList 	= mHitPointManager.GetLineList();
@@ -60,6 +60,30 @@ public class Sucker : MonoBehaviour {
 			mRigidbody.velocity = new Vector2(vx, vy * (-1));
 		}
 
+		// 反射星にぶつかったら
+		else if(other.gameObject.tag == "ReflectStar"){
+
+			float x = transform.position.x - other.transform.position.x;
+
+			float rad;
+			if (x >= 0f) {	// 右90度
+				rad = Mathf.Deg2Rad * -90f;
+			}
+			else {			// 左90度
+				rad = Mathf.Deg2Rad * 90f;
+			}
+
+			List<Vector2> hitList = mHitPointManager.GetHitPointList ();
+			Vector2 travelVec = Vec3ToVec2.GenV3ToV2 (transform.position) - hitList [hitList.Count - 1];
+
+			float tx = travelVec.x * Mathf.Cos (rad) - travelVec.y * Mathf.Sin(rad);
+			float ty = travelVec.x * Mathf.Sin (rad) + travelVec.y * Mathf.Cos(rad);
+			Vector2 targetVec2 = new Vector2 (tx, ty);
+
+			mRigidbody.velocity = new Vector2(targetVec2.normalized.x * mSpeed, targetVec2.normalized.y * mSpeed);
+
+		}
+
 		// 新しい反射角の追加
 		mHitPointManager.AddHitPoint (transform.position);
 
@@ -84,39 +108,6 @@ public class Sucker : MonoBehaviour {
 			lineList[lineList.Count - 1].GetComponent<LineRenderer>().SetPosition(1, transform.position + Vector3.back);
 
 			ChangePulling (other.gameObject);
-		}
-
-		// 反射星にぶつかったら
-		else if(other.gameObject.tag == "ReflectStar"){
-			
-			float x = (other.contacts [0].point - Vec3ToVec2.GenV3ToV2 (other.collider.bounds.center)).x;
-
-			List<Vector2> hitList = mHitPointManager.GetHitPointList ();
-			Vector2 travelVec = Vec3ToVec2.GenV3ToV2 (transform.position) - hitList [hitList.Count - 1];
-			float rad;
-			if (x >= 0f) {	// 右90度
-				rad = Mathf.Deg2Rad * -90f;
-			}
-			else {			// 左90度
-				rad = Mathf.Deg2Rad * 90f;
-			}
-
-			float tx = travelVec.x * Mathf.Cos (rad) - travelVec.y * Mathf.Sin(rad);
-			float ty = travelVec.x * Mathf.Sin (rad) + travelVec.y * Mathf.Cos(rad);
-			Vector2 targetVec2 = new Vector2 (tx, ty);
-
-			mRigidbody.velocity = new Vector2(targetVec2.normalized.x * mSpeed, targetVec2.normalized.y * mSpeed);
-
-			// 新しい反射角の追加
-			mHitPointManager.AddHitPoint (transform.position);
-
-			// 前のLineをここで止めて、新しいLineを追加
-			GameObject newPrefab = Instantiate (mPrefabLine, Vector3.zero, Quaternion.identity) as GameObject;
-			newPrefab.GetComponent<LineRenderer> ().SetPosition (0, transform.position + Vector3.back);
-			mHitPointManager.AddLineObject (newPrefab);
-			List<GameObject> lineList = mHitPointManager.GetLineList();
-			lineList [lineList.Count - 2].GetComponent<LineRenderer> ().SetPosition (1, transform.position + Vector3.back);
-
 		}
 
 	}

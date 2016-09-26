@@ -16,4 +16,18 @@ public class Star : MonoBehaviour {
 
 	}
 
+
+	void OnTriggerEnter2D(Collider2D other){
+
+		if (other.gameObject.tag == "ReflectStar") {
+
+			GameObject tmp = GameObject.FindGameObjectWithTag ("Sucker");
+			if (tmp != null) {
+				tmp.GetComponent<Pull> ().ChangeMoving ();
+			}
+
+		}
+
+	}
+
 }

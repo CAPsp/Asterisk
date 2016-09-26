@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeTime: 1
   imageObject: {fileID: 1223731708}
-  nextScene: Game
+  nextScene: Game2
   audioClip: {fileID: 0}
 --- !u!82 &228761076
 AudioSource:
@@ -1730,7 +1730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeTime: 1
   imageObject: {fileID: 1223731708}
-  nextScene: Game
+  nextScene: Game3
   audioClip: {fileID: 0}
 --- !u!82 &1899865057
 AudioSource:

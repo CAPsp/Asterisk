@@ -18,16 +18,16 @@ public class ButtonSelect : MonoBehaviour {
                 dis1_3.SetActive(false);
                 break;
             case 2:
-                GameObject dis2_1 = GameObject.Find("Menu1");
-                dis2_1.SetActive(false);
+                //GameObject dis2_1 = GameObject.Find("Menu1");
+                //dis2_1.SetActive(false);
                 GameObject dis2_3 = GameObject.Find("Menu3");
                 dis2_3.SetActive(false);
                 break;
             case 3:
-                GameObject dis3_1 = GameObject.Find("Menu1");
-                dis3_1.SetActive(false);
-                GameObject dis3_2 = GameObject.Find("Menu2");
-                dis3_2.SetActive(false);
+                //GameObject dis3_1 = GameObject.Find("Menu1");
+                //dis3_1.SetActive(false);
+                //GameObject dis3_2 = GameObject.Find("Menu2");
+                //dis3_2.SetActive(false);
                 break;
 
 

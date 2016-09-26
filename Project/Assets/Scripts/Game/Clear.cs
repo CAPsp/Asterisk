@@ -5,7 +5,7 @@ public class Clear : MonoBehaviour {
 
 	[SerializeField] GameObject mClearUI;
 
-	static bool mIsClear;
+	static protected bool mIsClear;
 
 	void Awake(){
 		mIsClear = false;

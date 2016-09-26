@@ -1,6 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 8dd31444a20a1bf498ada54b52fc58db
 folderAsset: yes
+=======
+guid: 8d2b6dd70ea7b482e8e02eab47ddaf46
+folderAsset: yes
+timeCreated: 1474865815
+licenseType: Free
+>>>>>>> koba_develop
 DefaultImporter:
   userData: 
   assetBundleName: 

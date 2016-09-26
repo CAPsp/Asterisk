@@ -30,6 +30,8 @@ public class ButtonSelect : MonoBehaviour {
                 //GameObject dis3_2 = GameObject.Find("Menu2");
                 //dis3_2.SetActive(false);
                 break;
+            default:
+                break;
 
 
         }

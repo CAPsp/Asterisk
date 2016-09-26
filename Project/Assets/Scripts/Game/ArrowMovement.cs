@@ -6,13 +6,23 @@ public class ArrowMovement : MonoBehaviour {
 	[SerializeField] float mMoveSpeed 		= 2f;
 	[SerializeField] float mRadius			= 3f;				// 中心から側面までの距離
 	[SerializeField] float mTouchLimitY		= -4f;				// これより下をタッチしたら移動判定
+	[SerializeField] Sprite mShooter;
+	[SerializeField] ArrowAttack mArrowAttack;
+	[SerializeField] SpriteRenderer mShootPointRenderer;
 
 	float mIgnoreDistance 	= 0.2f;
 	float mMovePointX 		= float.MaxValue;
+	Animator mAnimator;
 
+	void Awake(){
+		mAnimator = GetComponent<Animator> ();
+		mAnimator.SetBool ("Walk", false);
+	}
 
 	// Update is called once per frame
 	void Update () {
+		mAnimator.enabled 			= true;
+		mShootPointRenderer.enabled = false;
 
 		// 移動中
 		if(mMovePointX != float.MaxValue){
@@ -28,9 +38,19 @@ public class ArrowMovement : MonoBehaviour {
 			}
 				
 			if (Mathf.Abs (tmp.x - transform.position.x) > mIgnoreDistance) {
+				mAnimator.SetBool ("Walk", true);
 				mMovePointX = tmp.x;
+
+				if (mMovePointX < transform.position.x) {	// 左
+					transform.rotation = Quaternion.AngleAxis(180f, Vector3.up);
+				}
+				else {	// 右
+					transform.rotation = Quaternion.identity;
+				}
 			}
 			else {
+				mAnimator.enabled = false;
+				GetComponent<SpriteRenderer>().sprite = mShooter;
 				ChangeAttack();
 			}
 				
@@ -60,7 +80,8 @@ public class ArrowMovement : MonoBehaviour {
 		float x = Mathf.Lerp(transform.position.x, mMovePointX, Time.deltaTime * mMoveSpeed);
 		transform.position = new Vector3(x, transform.position.y, transform.position.z);
 
-		if ((Mathf.Abs (mMovePointX - transform.position.x) <= Mathf.Epsilon) || (Mathf.Abs (transform.position.x) > mRadius) ) {
+		if ((Mathf.Abs (mMovePointX - transform.position.x) <= mIgnoreDistance) || (Mathf.Abs (transform.position.x) > mRadius) ) {
+			mAnimator.SetBool ("Walk", false);
 			mMovePointX = float.MaxValue;
 		}
 
@@ -68,7 +89,7 @@ public class ArrowMovement : MonoBehaviour {
 
 	// 狙い撃ちに移行
 	void ChangeAttack(){
-		GetComponent<ArrowAttack> ().enabled = true;
+		mArrowAttack.enabled = true;
 		this.enabled = false;
 	}
 }

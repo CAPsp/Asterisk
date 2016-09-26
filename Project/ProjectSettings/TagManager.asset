@@ -9,6 +9,9 @@ TagManager:
   - GameAreaY
   - Sucker
   - Gage
+  - AllParentObject
+  - TargetStar
+  - BGM
   layers:
   - Default
   - TransparentFX
@@ -18,7 +21,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Wall
   - 
   - 
   - 

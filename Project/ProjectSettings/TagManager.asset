@@ -12,6 +12,8 @@ TagManager:
   - AllParentObject
   - TargetStar
   - BGM
+  - GameClear
+  - ReflectStar
   layers:
   - Default
   - TransparentFX

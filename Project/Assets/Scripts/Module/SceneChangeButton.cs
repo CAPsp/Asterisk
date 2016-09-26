@@ -23,7 +23,7 @@ public class SceneChangeButton : MonoBehaviour {
 
 	}
 
-	public void Push(){
+	public virtual void Push(){
 		isPushed_ = true;
 		darkChange_ = new DarkChange (displayImage_, darckChangeSpeed_);
 	}

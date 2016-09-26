@@ -3274,10 +3274,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2050348848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d3cf4838568c4f42aa18b7eb6031566, type: 3}
+  m_Script: {fileID: 11500000, guid: f75eebe7315fd4c56b301e2200e86b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName_: Menu
+  nextSceneName_: Mennu
   displayImage_: {fileID: 506839668}
   darckChangeSpeed_: 1
 --- !u!1 &2063337122
